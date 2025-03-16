@@ -7,6 +7,8 @@
 // console.log(navbarFile)
 
 
+
+
 async function loadHTML(selector, file) {
      try {
          const response = await fetch(file, { cache: "no-store" });
@@ -18,19 +20,23 @@ async function loadHTML(selector, file) {
  
          const data = await response.text();
          console.log("File Content:", data);  
- 
-         if (data.trim() !== "") {
-             document.querySelector(selector).innerHTML = data;
-         } else {
-             console.warn("The file seems empty or not loaded properly:", file);
-         }
+         document.querySelector(selector).innerHTML = data;
+        //  setActiveNav();
      } catch (error) {
          console.error("Error:", error);
      }
  }
- 
+ document.addEventListener('DOMContentLoaded', ()=> {
+    loadHTML("#body","home.html")
+ })
  
  loadHTML("#navbar", "navbar.html");
  loadHTML("#footer", "footer.html");
  
 
+//  function setActiveNav(){
+//     const sections = document.querySelectorAll('section');
+//     const navLinks = document.querySelectorAll('#navbar a');
+
+
+//  }
